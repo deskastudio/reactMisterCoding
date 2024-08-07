@@ -1,0 +1,22 @@
+.avatar {
+    border-radius: 200px;
+    background-color: gray;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.avatar_lg {
+    width: 140px;
+    height: 140px;
+}
+
+.avatar_md {
+    width: 100px;
+    height: 100px;
+}
+
+.avatar_sm {
+    width: 60px;
+    height: 60px;
+}
