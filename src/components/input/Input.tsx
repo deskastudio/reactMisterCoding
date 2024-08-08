@@ -1,30 +1,32 @@
-import { FC } from 'react';
+import { FC, ChangeEvent } from 'react';
 import "./Input.css";
-import { ChangeEvent } from 'react';
 
-type typeInput = "text" | "number" | "password"
+type TypeInput = "text" | "number" | "password" | "email";
 
 interface Props {
     placeholder?: string;
-    type?: typeInput;
+    type?: TypeInput;
     value?: number | string;
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+    style?: React.CSSProperties;
 }
 
-const Input: FC<Props> = ({ placeholder, type, value, onChange }) => {
+const Input: FC<Props> = ({
+    placeholder = "Masukkan Data",  // Default value for placeholder
+    type = "text",  // Default value for type
+    value,
+    onChange,
+    style
+}) => {
     return (
         <input 
             type={type} 
             placeholder={placeholder} 
             value={value} 
-            onChange={onChange} 
+            onChange={onChange}
+            style={style}
         /> 
     );
-};
-
-Input.defaultProps = {
-    placeholder: "Masukkan Data",
-    type: "text"
 };
 
 export default Input;
