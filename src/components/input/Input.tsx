@@ -9,6 +9,7 @@ interface Props {
     value?: number | string;
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
     style?: React.CSSProperties;
+    required?: boolean; // Tambahkan properti required
 }
 
 const Input: FC<Props> = ({
@@ -16,7 +17,8 @@ const Input: FC<Props> = ({
     type = "text",  // Default value for type
     value,
     onChange,
-    style
+    style,
+    required
 }) => {
     return (
         <input 
@@ -25,6 +27,7 @@ const Input: FC<Props> = ({
             value={value} 
             onChange={onChange}
             style={style}
+            required={required} // Pastikan properti required diteruskan ke input element
         /> 
     );
 };

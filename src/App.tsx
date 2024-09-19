@@ -1,14 +1,11 @@
-import LatihanForm from "./features/latihan-form/LatihanForm";
-import LatihanForm2 from "./features/latihan-form/LatihanForm2";
-
-
+import Todos1 from "./features/latihan-hook/Todos1";
+import Todos2 from "./features/latihan-hook/Todos2";
 function App() {
   return (
     <>
       <div className="App">
-        {/* <LatihanForm /> */}
-        <LatihanForm2 />
-        
+        <Todos1 />
+        <Todos2 />
       </div>
     </>
   );
