@@ -11,7 +11,7 @@ const WithUsecallback = () => {
 
   const addTodo = useCallback(() => {
     setTodos((t) => [...t, "Todo Baru"]);
-  }, [todos]);
+  }, []);
 
   return (
     <>
