@@ -1,35 +1,16 @@
-import { FC, ChangeEvent } from 'react';
-import "./Input.css";
-
-type TypeInput = "text" | "number" | "password" | "email";
-
-interface Props {
-    placeholder?: string;
-    type?: TypeInput;
-    value?: number | string;
-    onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-    style?: React.CSSProperties;
-    required?: boolean; // Tambahkan properti required
+import { FC, InputHTMLAttributes } from "react";
+type typeInput = "text" | "number" | "password" | "email";
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
+  placeholder?: string;
+  value?: number | string;
+  type?: typeInput;
 }
-
-const Input: FC<Props> = ({
-    placeholder = "Masukkan Data",  // Default value for placeholder
-    type = "text",  // Default value for type
-    value,
-    onChange,
-    style,
-    required
-}) => {
-    return (
-        <input 
-            type={type} 
-            placeholder={placeholder} 
-            value={value} 
-            onChange={onChange}
-            style={style}
-            required={required} // Pastikan properti required diteruskan ke input element
-        /> 
-    );
+const Input: FC<Props> = ({ placeholder, type, value, ...props }) => {
+  return (
+    <>
+      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type={type} placeholder={placeholder} value={value} {...props} />
+    </>
+  );
 };
-
+Input.defaultProps = { placeholder: "Masukan Data", type: "text" };
 export default Input;

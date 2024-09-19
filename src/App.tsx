@@ -1,12 +1,13 @@
-import Todos1 from "./features/latihan-hook/Todos1";
-import Todos2 from "./features/latihan-hook/Todos2";
+import { Button, Card, CardBody } from "@chakra-ui/react";
+
 function App() {
   return (
     <>
-      <div className="App">
-        <Todos1 />
-        <Todos2 />
-      </div>
+      <Card>
+        <CardBody>
+          <Button>My Button</Button>
+        </CardBody>
+      </Card>
     </>
   );
 }
