@@ -1,9 +1,9 @@
-import TodoListApp from "./features/todo-list/TodoListApp";
+import Tasks from "./features/tasks/Tasks";
 
 function App() {
   return (
     <>
-      <TodoListApp />
+      <Tasks />
     </>
   );
 }
