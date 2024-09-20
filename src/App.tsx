@@ -1,13 +1,9 @@
-import { Button, Card, CardBody } from "@chakra-ui/react";
+import TodoListApp from "./features/todo-list/TodoListApp";
 
 function App() {
   return (
     <>
-      <Card>
-        <CardBody>
-          <Button>My Button</Button>
-        </CardBody>
-      </Card>
+      <TodoListApp />
     </>
   );
 }
