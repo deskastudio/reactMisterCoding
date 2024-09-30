@@ -1,62 +1,55 @@
 import {
   Box,
-  Button,
   ButtonGroup,
   Card,
   CardBody,
   Flex,
-  Icon,
   Text,
   Spinner,
 } from "@chakra-ui/react";
-import { BsFillTrash3Fill, BsPencilSquare } from "react-icons/bs";
-import { useLazyGetTaskQuery } from "../../store/api/taskApi"; // Changed to useLazyGetTasksQuery
+import { useLazyGetTasksQuery } from "../../store/api/taskApi"; // Digunakan dengan benar
 import { useEffect } from "react";
+import EditTasks from "./EditTasks";
+import DeleteTasks from "./DeleteTaska";
 
 const ListTasks = () => {
-  const [getTasks, { data, isFetching, isLoading, isSuccess }] = useLazyGetTaskQuery();
+  const [getTasks, { data, isFetching, isLoading, isError }] = useLazyGetTasksQuery();
 
   useEffect(() => {
     getTasks(); // Trigger API call when component mounts
   }, [getTasks]);
 
+  // Render spinner jika data sedang dimuat
   if (isLoading || isFetching) {
     return (
       <Flex justifyContent="center" alignItems="center" height="100vh">
-        <Spinner size="xl" /> {/* Loading spinner while fetching data */}
+        <Spinner size="xl" />
       </Flex>
     );
   }
 
-  if (!isSuccess) {
-    return <Text>Error fetching tasks</Text>; // Handle error state
+  // Render error message jika ada error
+  if (isError) {
+    return <Text>Error fetching tasks</Text>;
   }
 
   return (
     <Box my={3}>
-    {data?.map((item, index) => (
-      <Card key={index} my={4}>
-        <CardBody>
-          <Flex justifyContent={"space-between"} alignItems={"center"}>
-            <Text>{item.task_name}</Text>
-            <Text>{item.task_description}</Text>
-            <ButtonGroup>
-              <Button>
-                <Icon as={BsPencilSquare} />
-              </Button>
-              <Button
-                bg={"red.400"}
-                color={"white"}
-                _hover={{ bg: "red/300" }}
-              >
-                <Icon as={BsFillTrash3Fill} />
-              </Button>
-            </ButtonGroup>
-          </Flex>
-        </CardBody>
-      </Card>
-    ))}
-  </Box>
+      {data?.map((item, index) => (
+        <Card key={index} my={4}>
+          <CardBody>
+            <Flex justifyContent={"space-between"} alignItems={"center"}>
+              <Text>{item.task_name}</Text>
+              <Text>{item.task_description}</Text>
+              <ButtonGroup>
+                  <EditTasks id={item.id} />
+                  <DeleteTasks id={item.id} />
+              </ButtonGroup>
+            </Flex>
+          </CardBody>
+        </Card>
+      ))}
+    </Box>
   );
 };
 

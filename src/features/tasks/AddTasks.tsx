@@ -20,7 +20,7 @@ import {
             <ModalHeader>Add Tasks</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <FormTasks />
+              <FormTasks {...{onSuccess: onClose}}/>
             </ModalBody>
           </ModalContent>
         </Modal>
